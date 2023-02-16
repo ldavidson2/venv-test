@@ -1,8 +1,1 @@
-{
-  "storage": {
-    "venvdb": {
-      "providerPlugin": "awscloudformation",
-      "service": "DynamoDB"
-    }
-  }
-}
+{}
