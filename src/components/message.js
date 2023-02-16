@@ -10,12 +10,24 @@ const myAPI = "test1API";
 const path = "/items";
 
 export default function Message() {
-   const apiUrl = 'https://test1API.execute-api.AWS::Region.amazonaws.com/env';
-   fetch(apiUrl)
-     .then((response) => response.json())
-     .then((data) => console.log('This is your data', data));
- }
- render() {
-   return <h1>my Component has Mounted, Check the browser 'console' </h1>;
- }
+  const [result, setresult] = useState(null);
+  const message = async () => {
+    try {
+      let res = await API.get(myAPI, path, {});
+      let result = res.data;
+      setresult(res);
+    } catch (e) {
+      console.log(e);
+    }
+  };
 
+  useEffect(() => {
+    message();
+  }, []);
+  return (
+    <div>
+      <h1>Results:</h1>
+      {result}
+    </div>
+  );
+}
