@@ -1,14 +1,21 @@
 import React from "react";
 import { useState, useEffect } from "react";
-import axios from "axios";
+import awsmobile from "../aws-exports";
+import { Amplify, API } from "aws-amplify";
+
+Amplify.configure(awsmobile);
+API.configure(awsmobile);
+
+const myAPI = "test1API";
+const path = "/items";
 
 export default function Message() {
   const [result, setresult] = useState(null);
   const message = async () => {
     try {
-      let res = await axios.get("https://test1API.execute-api.AWS::Region.amazonaws.com/env");
+      let res = await API.get(myAPI, path, {});
       let result = res.data;
-      setresult(result);
+      setresult(res);
     } catch (e) {
       console.log(e);
     }
