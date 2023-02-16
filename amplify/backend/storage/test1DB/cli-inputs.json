@@ -1,0 +1,14 @@
+{
+  "resourceName": "test1DB",
+  "tableName": "test1DB",
+  "partitionKey": {
+    "fieldName": "PK",
+    "fieldType": "string"
+  },
+  "sortKey": {
+    "fieldName": "SK",
+    "fieldType": "string"
+  },
+  "gsi": [],
+  "triggerFunctions": []
+}
