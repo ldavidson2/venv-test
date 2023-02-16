@@ -12,4 +12,4 @@ def handler(event, context):
         }
     )
   
-    return response['Item']
+    return response['Items']
