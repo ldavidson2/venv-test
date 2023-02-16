@@ -14,6 +14,15 @@
     "categories": {
       "storage": {
         "test1DB": {}
+      },
+      "function": {
+        "test1Function": {
+          "deploymentBucketName": "amplify-amplifyb8b28d7260864-staging-193755-deployment",
+          "s3Key": "amplify-builds/test1Function-41355061363230617439-build.zip"
+        }
+      },
+      "api": {
+        "test1API": {}
       }
     }
   }
