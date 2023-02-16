@@ -10,34 +10,24 @@ const myAPI = "test1API";
 const path = "/items";
 
 export default function Message() {
-  const [error, setError] = useState(null);
-  const [isLoaded, setIsLoaded] = useState(false);
-  const [users, setUsers] = useState([]);
+  const [result, setresult] = useState(null);
+  const message = async () => {
+    try {
+      let res = await API.get(myAPI, path, {});
+      let result = res.data;
+      setresult(res);
+    } catch (e) {
+      console.log(e);
+    }
+  };
+
   useEffect(() => {
-    fetch("https://test1API.execute-api.AWS::Region.amazonaws.com/items")
-      .then((res) => res.json())
-      .then(
-        (data) => {
-          setIsLoaded(true);
-          setUsers(data);
-        },
-        (error) => {
-          setIsLoaded(true);
-          setError(error);
-        }
-      );
+    message();
   }, []);
-  if (error) {
-    return <div>Error: {error.message}</div>;
-  } else if (!isLoaded) {
-    return <div>Loading...</div>;
-  } else {
-    return (
-      <ul>
-        {users.map((user) => (
-          <li key={user.PK}>{user.companyName}</li>
-        ))}
-      </ul>
-    );
-  }
+  return (
+    <div>
+      <h1>Results:</h1>
+      {result}
+    </div>
+  );
 }
